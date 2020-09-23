@@ -22,17 +22,16 @@
             <h3 class="card-title">Ubah Data Menu</h3>
           </div>
             <div class="card-body">
-            <?php foreach($data_menu as $row_menu){?>
                 <form class="form-horizontal" role="form" action="<?= site_url('menu/update_data');?>" method="post">
                     <div class="card-body">
                     <div class="form-group row">
                         <label for="nama_menu">Nama Menu</label>
-                        <input id="nama_menu" type="text" class="form-control" name="nama_menu" placeholder="Nama Menu" value="<?= $row_menu->nama_menu;?>" required>
-                        <input type="hidden" class="form-control" name="id_menu" value="<?= $row_menu->id_menu;?>">
+                        <input id="nama_menu" type="text" class="form-control" name="nama_menu" placeholder="Nama Menu" value="<?= $data_menu->nama_menu;?>" required>
+                        <input type="hidden" class="form-control" name="id_menu" value="<?= $data_menu->id_menu;?>">
                     </div>
                     <div class="form-group row">
                         <label for="icon_menu">Icon Menu</label>
-                        <input id="icon_menu" type="text" class="form-control" name="icon_menu" placeholder="Icon Menu" value="<?= $row_menu->icon_menu;?>" required>
+                        <input id="icon_menu" type="text" class="form-control" name="icon_menu" placeholder="Icon Menu" value="<?= $data_menu->icon_menu;?>" required>
                     </div>
                     </div>
                     <!-- /.card-body -->
@@ -42,7 +41,6 @@
                     </div>
                     <!-- /.card-footer -->
                 </form>
-            <?php } ?>
             </div>
         </div>
       </div><!--/. container-fluid -->
