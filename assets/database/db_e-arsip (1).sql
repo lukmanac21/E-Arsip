@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2020 at 03:11 AM
+-- Generation Time: Sep 23, 2020 at 03:54 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -54,6 +54,18 @@ CREATE TABLE `mst_menu` (
 INSERT INTO `mst_menu` (`id_menu`, `nama_menu`, `icon_menu`) VALUES
 (1, 'Data Master', 'nav-icon fas fa-th'),
 (2, 'Surat', 'nav-icon far fa-envelope');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mst_paraf`
+--
+
+CREATE TABLE `mst_paraf` (
+  `id_paraf` int(11) NOT NULL,
+  `nama_paraf` varchar(255) NOT NULL,
+  `img_paraf` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -196,6 +208,12 @@ ALTER TABLE `mst_menu`
   ADD PRIMARY KEY (`id_menu`);
 
 --
+-- Indexes for table `mst_paraf`
+--
+ALTER TABLE `mst_paraf`
+  ADD PRIMARY KEY (`id_paraf`);
+
+--
 -- Indexes for table `mst_role`
 --
 ALTER TABLE `mst_role`
@@ -246,6 +264,12 @@ ALTER TABLE `mst_disposisi`
 --
 ALTER TABLE `mst_menu`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `mst_paraf`
+--
+ALTER TABLE `mst_paraf`
+  MODIFY `id_paraf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mst_role`
