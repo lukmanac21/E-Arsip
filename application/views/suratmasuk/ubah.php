@@ -29,21 +29,36 @@
                                     <input type="hidden" name="id_surat_masuk" value="<?= $sm->id_surat_masuk ?>">
                                     <input type="hidden" name="gambarLama" value="<?= $sm->bukti_surat ?>">
                                     <div class="card-body">
-                                        <div class="form-group row">
-                                            <label for="no_surat">Nomer Surat</label>
-                                            <input id="no_surat" type="text" class="form-control" name="no_surat" placeholder="Nomer Surat" value="<?= $sm->no_surat ?>" required>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="no_surat">Nomer Surat</label>
+                                                <input id="no_surat" type="text" class="form-control" value="<?= $sm->no_surat ?>" name="no_surat" placeholder="Nomer Surat" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="tgl_surat">Tanggal Surat</label>
+                                                <input id="tgl_surat" type="date" class="form-control" value="<?= $sm->tgl_surat ?>" name="tgl_surat" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="pengirim_surat">Pengirim Surat</label>
+                                                <input id="pengirim_surat" type="text" class="form-control" value="<?= $sm->pengirim_surat ?>" name="pengirim_surat" placeholder="Pengirim Surat" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="no_agenda">Nomer Agenda</label>
+                                                <input id="no_agenda" type="text" class="form-control" value="<?= $sm->no_agenda_surat ?>" name="no_agenda_surat" placeholder="Nomer Agenda" required>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="tgl_terima_surat">Tanggal Terima</label>
+                                                <input id="tgl_terima_surat" type="date" class="form-control" value="<?= $sm->tgl_terima_surat ?>" name="tgl_terima_surat" required>
+                                            </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="tgl_surat">Tanggal Surat</label>
-                                            <input id="tgl_surat" type="date" class="form-control" name="tgl_surat" value="<?= $sm->tgl_surat ?>" required>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="pengirim_surat">Pengirim Surat</label>
-                                            <input id="pengirim_surat" type="text" class="form-control" name="pengirim_surat" placeholder="Pengirim Surat" value="<?= $sm->pengirim_surat ?>" required>
+                                        <div class="form-group">
+                                            <label for="perihal_surat">Perihal Surat</label>
+                                            <textarea id="perihal_surat" type="text" class="form-control" name="perihal_surat" placeholder="Perihal Surat" required><?= $sm->perihal_surat ?></textarea>
                                         </div>
                                         <div class="form-group row">
                                             <label for="bukti_surat">Bukti Surat</label>
                                             <input id="bukti_surat" type="file" class="form-control-file" name="file">
+                                            <small id="emailHelp" class="form-text text-muted">Format: jpg, jpeg dan png</small>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

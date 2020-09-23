@@ -25,7 +25,10 @@
                                     <tr>
                                         <th style="text-align:center;">Nomer Surat</th>
                                         <th style="text-align:center;">Tanggal Surat</th>
-                                        <th style="text-align:center;">Pengirim Surat</th>
+                                        <th style="text-align:center;">Pengirim</th>
+                                        <th style="text-align:center;">Nomer Agenda</th>
+                                        <th style="text-align:center;">Tanggal Diterima</th>
+                                        <th style="text-align:center;">Perihal</th>
                                         <th style="text-align:center;">Bukti Surat</th>
                                         <th style="text-align:center;">Ubah</th>
                                         <th style="text-align:center;">Hapus</th>
@@ -37,8 +40,11 @@
                                             <td style="text-align:center;"><?= $sm->no_surat; ?></td>
                                             <td style="text-align:center;"><?= $sm->tgl_surat; ?></td>
                                             <td style="text-align:center;"><?= $sm->pengirim_surat; ?></td>
+                                            <td style="text-align:center;"><?= $sm->no_agenda_surat; ?></td>
+                                            <td style="text-align:center;"><?= $sm->tgl_terima_surat; ?></td>
+                                            <td style="text-align:center;"><?= $sm->perihal_surat; ?></td>
                                             <td style="text-align:center;">
-                                                <img width="100" height="100" src="<?= base_url('assets/img/suratmasuk/') . $sm->bukti_surat ?>" data-toggle="modal" data-target="#suratModal">
+                                                <button data-toggle="modal" data-target="#suratModal" class="btn btn-success">Bukti</button>
                                             </td>
                                             <td style="text-align:center;">
                                                 <a style="color:white;" type="button" href="<?= site_url('Suratmasuk/edit_data/') . $sm->id_surat_masuk; ?>" class="btn btn-info">

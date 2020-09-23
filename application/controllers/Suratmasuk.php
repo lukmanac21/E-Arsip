@@ -32,6 +32,9 @@ class Suratmasuk extends CI_Controller
         $data['no_surat']               = $this->input->post('no_surat');
         $data['tgl_surat']              = $this->input->post('tgl_surat');
         $data['pengirim_surat']         = $this->input->post('pengirim_surat');
+        $data['perihal_surat']          = $this->input->post('perihal_surat');
+        $data['tgl_terima_surat']       = $this->input->post('tgl_terima_surat');
+        $data['no_agenda_surat']       = $this->input->post('no_agenda_surat');
         $images                         = "";
         $upload                         = $this->main->upload_file_surat();
         if ($upload['result'] == "success") { // Jika proses upload sukses
@@ -60,6 +63,9 @@ class Suratmasuk extends CI_Controller
         $data['no_surat']               = $this->input->post('no_surat');
         $data['tgl_surat']              = $this->input->post('tgl_surat');
         $data['pengirim_surat']         = $this->input->post('pengirim_surat');
+        $data['perihal_surat']          = $this->input->post('perihal_surat');
+        $data['tgl_terima_surat']       = $this->input->post('tgl_terima_surat');
+        $data['no_agenda_surat']       = $this->input->post('no_agenda_surat');
         $gambarLama                     = $this->input->post('gambarLama');
 
         $upload                         = $this->main->upload_file_surat();
