@@ -24,12 +24,18 @@ CREATE TABLE `mst_disposisi` (
   `id_disposisi` int(11) NOT NULL AUTO_INCREMENT,
   `id_surat` int(11) NOT NULL,
   `tgl_disposisi` date NOT NULL,
-  `isi_disposisi` text NOT NULL,
+  `diteruskan_kepada` text DEFAULT NULL,
+  `isi_disposisi` text DEFAULT NULL,
+  `id_paraf_kepala` int(11) DEFAULT NULL,
+  `id_paraf_sek` int(11) DEFAULT NULL,
   `created_by` int(11) NOT NULL,
   PRIMARY KEY (`id_disposisi`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `mst_disposisi` */
+
+insert  into `mst_disposisi`(`id_disposisi`,`id_surat`,`tgl_disposisi`,`diteruskan_kepada`,`isi_disposisi`,`id_paraf_kepala`,`id_paraf_sek`,`created_by`) values 
+(2,3,'2020-09-23','<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>','Tester',NULL,NULL,1);
 
 /*Table structure for table `mst_menu` */
 
@@ -103,7 +109,7 @@ CREATE TABLE `mst_sub_menu` (
   `nama_sub_menu` varchar(50) NOT NULL,
   `link_sub_menu` varchar(50) NOT NULL,
   PRIMARY KEY (`id_sub_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mst_sub_menu` */
 
@@ -114,7 +120,8 @@ insert  into `mst_sub_menu`(`id_sub_menu`,`id_menu`,`nama_sub_menu`,`link_sub_me
 (15,2,'Surat Masuk','Suratmasuk/index'),
 (16,2,'Surat Keluar','Suratkeluar/index'),
 (18,2,'Disposisi','Disposisi/index'),
-(19,1,'Master Paraf','Paraf/index');
+(19,1,'Master Paraf','Paraf/index'),
+(21,2,'Disposisi Kepala','DisposisiKepala/index');
 
 /*Table structure for table `mst_surat_masuk` */
 
@@ -130,9 +137,12 @@ CREATE TABLE `mst_surat_masuk` (
   `no_agenda_surat` int(11) NOT NULL,
   `bukti_surat` varchar(255) NOT NULL,
   PRIMARY KEY (`id_surat_masuk`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `mst_surat_masuk` */
+
+insert  into `mst_surat_masuk`(`id_surat_masuk`,`no_surat`,`tgl_surat`,`pengirim_surat`,`perihal_surat`,`tgl_terima_surat`,`no_agenda_surat`,`bukti_surat`) values 
+(3,'800/1558/430.9.11/2020','2020-09-14','Dinas PUPR','Permohonan Perizinan Magang','2020-09-09',278,'chopper.jpg');
 
 /*Table structure for table `mst_user` */
 
@@ -161,18 +171,19 @@ CREATE TABLE `mst_user_access` (
   `id_role` int(11) NOT NULL,
   `id_sub_menu` int(11) NOT NULL,
   PRIMARY KEY (`id_user_access`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mst_user_access` */
 
 insert  into `mst_user_access`(`id_user_access`,`id_role`,`id_sub_menu`) values 
-(1,1,1),
 (2,1,3),
 (3,1,12),
 (17,1,15),
 (18,1,16),
-(31,1,18),
-(32,1,19);
+(32,1,19),
+(34,1,18),
+(35,1,21),
+(36,1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

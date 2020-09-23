@@ -19,7 +19,7 @@ class main extends CI_MODEL
     function get_data_where($table, $where)
     {
         $query = $this->db->get_where($table, $where);
-        return $query->result();
+        return $query->row();
     }
     function show_all_data_order_by($table, $field)
     {
