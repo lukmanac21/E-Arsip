@@ -24,28 +24,26 @@
                             <h3 class="card-title">Ubah Data Surat Masuk</h3>
                         </div>
                         <div class="card-body">
-                            <?php foreach ($paraf as $row_paraf) { ?>
-                                <form class="form-horizontal" role="form" action="<?= site_url('Paraf/update_data'); ?>" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="id_paraf" value="<?= $row_paraf->id_paraf ?>">
-                                    <input type="hidden" name="gambarLama" value="<?= $row_paraf->img_paraf ?>">
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <label for="nama_paraf">Nama Paraf</label>
-                                            <input id="nama_paraf" type="text" class="form-control" name="nama_paraf" placeholder="Nomer Surat" value="<?= $row_paraf->nama_paraf ?>" required>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="bukti_surat">Paraf</label>
-                                            <input id="bukti_surat" type="file" class="form-control-file" name="file">
-                                        </div>
+                            <form class="form-horizontal" role="form" action="<?= site_url('Paraf/update_data'); ?>" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id_paraf" value="<?= $paraf->id_paraf ?>">
+                                <input type="hidden" name="gambarLama" value="<?= $paraf->img_paraf ?>">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="nama_paraf">Nama Paraf</label>
+                                        <input id="nama_paraf" type="text" class="form-control" name="nama_paraf" placeholder="Nomer Surat" value="<?= $paraf->nama_paraf ?>" required>
                                     </div>
-                                    <!-- /.card-body -->
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                        <button type="reset" class="btn btn-default float-right">Reset</button>
+                                    <div class="form-group row">
+                                        <label for="bukti_surat">Paraf</label>
+                                        <input id="bukti_surat" type="file" class="form-control-file" name="file">
                                     </div>
-                                    <!-- /.card-footer -->
-                                </form>
-                            <?php } ?>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="reset" class="btn btn-default float-right">Reset</button>
+                                </div>
+                                <!-- /.card-footer -->
+                            </form>
                         </div>
                     </div>
                 </div>
