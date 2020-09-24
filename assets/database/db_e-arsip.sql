@@ -30,12 +30,12 @@ CREATE TABLE `mst_disposisi` (
   `id_paraf_sek` int(11) DEFAULT NULL,
   `created_by` int(11) NOT NULL,
   PRIMARY KEY (`id_disposisi`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `mst_disposisi` */
 
 insert  into `mst_disposisi`(`id_disposisi`,`id_surat`,`tgl_disposisi`,`diteruskan_kepada`,`isi_disposisi`,`id_paraf_kepala`,`id_paraf_sek`,`created_by`) values 
-(3,3,'2020-09-24','<ol><li>Mas Lukman</li></ol>','Where are you going',NULL,NULL,1);
+(4,3,'2020-09-24','<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>','Where are you going man, buwung apa tu?',NULL,NULL,1);
 
 /*Table structure for table `mst_menu` */
 
@@ -119,7 +119,7 @@ CREATE TABLE `mst_sub_menu` (
   `nama_sub_menu` varchar(50) NOT NULL,
   `link_sub_menu` varchar(50) NOT NULL,
   PRIMARY KEY (`id_sub_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mst_sub_menu` */
 
@@ -131,7 +131,8 @@ insert  into `mst_sub_menu`(`id_sub_menu`,`id_menu`,`nama_sub_menu`,`link_sub_me
 (16,2,'Surat Keluar','Suratkeluar/index'),
 (18,2,'Disposisi','Disposisi/index'),
 (19,1,'Master Paraf','Paraf/index'),
-(21,2,'Disposisi Kepala','DisposisiKepala/index');
+(21,2,'Disposisi Kepala','DisposisiKepala/index'),
+(22,2,'Disposisi Sekretaris','DisposisiSekretaris/index');
 
 /*Table structure for table `mst_surat_masuk` */
 
@@ -184,7 +185,7 @@ CREATE TABLE `mst_user_access` (
   `id_role` int(11) NOT NULL,
   `id_sub_menu` int(11) NOT NULL,
   PRIMARY KEY (`id_user_access`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mst_user_access` */
 
@@ -198,7 +199,8 @@ insert  into `mst_user_access`(`id_user_access`,`id_role`,`id_sub_menu`) values
 (35,1,21),
 (36,1,1),
 (37,4,21),
-(38,3,18);
+(38,3,18),
+(39,1,22);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
