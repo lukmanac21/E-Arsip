@@ -29,8 +29,21 @@
                                 <input type="hidden" name="gambarLama" value="<?= $paraf->img_paraf ?>">
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="nama_paraf">Nama Paraf</label>
+                                        <label for="nama_paraf">Nama</label>
                                         <input id="nama_paraf" type="text" class="form-control" name="nama_paraf" placeholder="Nomer Surat" value="<?= $paraf->nama_paraf ?>" required>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="jabatan">Jabatan</label>
+                                        <select name="jabatan" id="jabatan" class="form-control">
+                                            <option>-- Pilih Jabatan --</option>
+                                            <?php foreach ($jabatan as $j) : ?>
+                                                <?php if ($paraf->id_role == $j->id_role) : ?>
+                                                    <option value="<?= $j->id_role ?>" selected><?= $j->jabatan ?></option>
+                                                <?php else : ?>
+                                                    <option value="<?= $j->id_role ?>"><?= $j->jabatan ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                     <div class="form-group row">
                                         <label for="bukti_surat">Paraf</label>

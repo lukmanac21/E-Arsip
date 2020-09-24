@@ -24,6 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align:center;">Nama</th>
+                                        <th style="text-align:center;">Jabatan</th>
                                         <th style="text-align:center;">Paraf</th>
                                         <th style="text-align:center;">Ubah</th>
                                         <th style="text-align:center;">Hapus</th>
@@ -33,6 +34,7 @@
                                     <?php foreach ($paraf as $row_paraf) { ?>
                                         <tr>
                                             <td style="text-align:center;"><?= $row_paraf->nama_paraf; ?></td>
+                                            <td style="text-align:center;"><?= $row_paraf->jabatan; ?></td>
                                             <td style="text-align:center;">
                                                 <img width="100" height="100" src="<?= base_url('assets/img/paraf/') . $row_paraf->img_paraf ?>" data-toggle="modal" data-target="#suratModal">
                                             </td>

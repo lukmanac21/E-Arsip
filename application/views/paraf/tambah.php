@@ -27,8 +27,17 @@
               <form class="form-horizontal" role="form" action="<?= site_url('Paraf/save_data'); ?>" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="nama_surat">Nama</label>
-                    <input id="nama_surat" type="text" class="form-control" name="nama_paraf" placeholder="Nama Paraf" required>
+                    <label for="nama">Nama</label>
+                    <input id="nama" type="text" class="form-control" name="nama_paraf" placeholder="Nama Paraf" required>
+                  </div>
+                  <div class="form-group row">
+                    <label for="jabatan">Jabatan</label>
+                    <select name="jabatan" id="jabatan" class="form-control">
+                      <option>-- Pilih Jabatan --</option>
+                      <?php foreach ($jabatan as $j) : ?>
+                        <option value="<?= $j->id_role ?>"><?= $j->jabatan ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                   <div class="form-group row">
                     <label for="bukti_surat">Paraf</label>

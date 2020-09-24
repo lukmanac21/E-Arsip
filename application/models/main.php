@@ -21,6 +21,11 @@ class main extends CI_MODEL
         $query = $this->db->get_where($table, $where);
         return $query->row();
     }
+    function multi_row_where($table, $where)
+    {
+        $query = $this->db->get_where($table, $where);
+        return $query->result();
+    }
     function show_all_data_order_by($table, $field)
     {
         $query = $this->db->select('*')->from($table)->order_by($field)->get();

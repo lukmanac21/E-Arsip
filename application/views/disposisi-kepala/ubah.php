@@ -24,7 +24,7 @@
                             <h3 class="card-title">Ubah Data Disposisi</h3>
                         </div>
                         <div class="card-body">
-                            <form class="form-horizontal" role="form" action="<?= site_url('Disposisi/update_data'); ?>" method="post">
+                            <form class="form-horizontal" role="form" action="<?= site_url('DisposisiKepala/update_data'); ?>" method="post">
                                 <input type="hidden" name="id_disposisi" value="<?= $disposisi->id_disposisi ?>">
                                 <div class="card-body">
                                     <div class="row">
@@ -47,11 +47,6 @@
                                             <textarea id="isi_disposisi" class="form-control" name="isi_disposisi" placeholder="Nomer Agenda" required><?= $disposisi->isi_disposisi ?></textarea>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="img_paraf">Paraf</label>
-                                            <input id="img_paraf" type="file" class="form-control-file" name="file">
-                                            <small id="emailHelp" class="form-text text-muted">Format: jpg, jpeg dan png</small>
-                                        </div>
-                                        <div class="form-group col-md-12">
                                             <label for="diteruskan_kepada">Diteruskan Kepada</label>
                                             <textarea name="diteruskan_kepada" id="compose-textarea" class="form-control" height="500"><?= $disposisi->diteruskan_kepada ?></textarea>
                                         </div>
@@ -59,7 +54,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="submit" class="btn btn-primary">Simpan & Verifikasi</button>
                                     <button type="reset" class="btn btn-default float-right">Reset</button>
                                 </div>
                                 <!-- /.card-footer -->

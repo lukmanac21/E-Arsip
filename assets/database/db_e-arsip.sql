@@ -30,12 +30,12 @@ CREATE TABLE `mst_disposisi` (
   `id_paraf_sek` int(11) DEFAULT NULL,
   `created_by` int(11) NOT NULL,
   PRIMARY KEY (`id_disposisi`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `mst_disposisi` */
 
 insert  into `mst_disposisi`(`id_disposisi`,`id_surat`,`tgl_disposisi`,`diteruskan_kepada`,`isi_disposisi`,`id_paraf_kepala`,`id_paraf_sek`,`created_by`) values 
-(2,3,'2020-09-23','<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>','Tester',NULL,NULL,1);
+(3,3,'2020-09-24','<ol><li>Mas Lukman</li></ol>','Where are you going',NULL,NULL,1);
 
 /*Table structure for table `mst_menu` */
 
@@ -62,10 +62,15 @@ CREATE TABLE `mst_paraf` (
   `id_paraf` int(11) NOT NULL AUTO_INCREMENT,
   `nama_paraf` varchar(255) NOT NULL,
   `img_paraf` varchar(255) NOT NULL,
+  `id_role` int(11) NOT NULL,
   PRIMARY KEY (`id_paraf`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `mst_paraf` */
+
+insert  into `mst_paraf`(`id_paraf`,`nama_paraf`,`img_paraf`,`id_role`) values 
+(3,'Lukman, ST.MT','ttd-rini.png',4),
+(4,'Huda, ST.MT','logo-rsbs.jpg',5);
 
 /*Table structure for table `mst_role` */
 
@@ -74,13 +79,18 @@ DROP TABLE IF EXISTS `mst_role`;
 CREATE TABLE `mst_role` (
   `id_role` int(11) NOT NULL AUTO_INCREMENT,
   `nama_role` varchar(255) NOT NULL,
+  `jabatan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `mst_role` */
 
-insert  into `mst_role`(`id_role`,`nama_role`) values 
-(1,'Superadmin');
+insert  into `mst_role`(`id_role`,`nama_role`,`jabatan`) values 
+(1,'Superadmin',NULL),
+(2,'Admin',NULL),
+(3,'Umum','Bagian Umum dan Kepegawaian'),
+(4,'Camat','Kepala Kecamatan'),
+(5,'Sekcam','Sekretaris Kecamatan');
 
 /*Table structure for table `mst_status` */
 
@@ -155,12 +165,15 @@ CREATE TABLE `mst_user` (
   `email_user` varchar(100) NOT NULL,
   `password_user` varchar(200) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mst_user` */
 
 insert  into `mst_user`(`id_user`,`id_role`,`nama_user`,`email_user`,`password_user`) values 
-(1,1,'Admin','Admin@kominfo.com','d033e22ae348aeb5660fc2140aec35850c4da997');
+(1,1,'Admin','Admin@kominfo.com','d033e22ae348aeb5660fc2140aec35850c4da997'),
+(2,3,'Umum','Umum@kominfo.com','b617726c7f45ecb196ef74881089fa17d90d7276'),
+(3,4,'Camat','Camat@kominfo.com','93b89e6160d6c85d709954ce733d5eec131ab0a0'),
+(4,5,'Sekcam','Sekcam@kominfo.com','d37ea5b3911c9a2a5b9b22321041754193e41acb');
 
 /*Table structure for table `mst_user_access` */
 
@@ -171,7 +184,7 @@ CREATE TABLE `mst_user_access` (
   `id_role` int(11) NOT NULL,
   `id_sub_menu` int(11) NOT NULL,
   PRIMARY KEY (`id_user_access`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mst_user_access` */
 
@@ -183,7 +196,9 @@ insert  into `mst_user_access`(`id_user_access`,`id_role`,`id_sub_menu`) values
 (32,1,19),
 (34,1,18),
 (35,1,21),
-(36,1,1);
+(36,1,1),
+(37,4,21),
+(38,3,18);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
