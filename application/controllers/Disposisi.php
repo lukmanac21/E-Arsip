@@ -20,20 +20,15 @@ class Disposisi extends CI_Controller
 
         $this->load->view('disposisi/index', $data);
     }
-    public function cetak($id_disposisi){
+    public function cetak($id_disposisi)
+    {
         $where                  = ['mst_disposisi.id_disposisi' => $id_disposisi];
-        $mpdf                   = new \Mpdf\Mpdf();
+        $mpdf                   = new \Mpdf\Mpdf(['format' => 'A4']);
         $data['disposisi']      = $this->main->get_data_disposisi($where);
-        $str = $this->db->last_query();
-   
-        echo "<pre>";
-        print_r($str);
-        exit;
-        //var_dump($data['disposisi']);
-		// $html                   = $this->load->view('laporan/disposisi',[],true);
+        $html                   = $this->load->view('laporan/disposisi', $data, true);
 
-        // $mpdf->WriteHTML($html);
-		// $mpdf->Output();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
     public function add_data()
     {
