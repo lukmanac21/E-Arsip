@@ -22,13 +22,12 @@
             <h3 class="card-title">Ubah Data role</h3>
           </div>
             <div class="card-body">
-            <?php foreach($role as $row_role){?>
                 <form class="form-horizontal" role="form" action="<?= site_url('Role/update_data');?>" method="post">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="nama_role">Nama role</label>
-                            <input id="nama_role" type="text" class="form-control" name="nama_role" placeholder="Nama Role" value="<?= $row_role->nama_role;?>" required>
-                            <input type="hidden" class="form-control" name="id_role" value="<?= $row_role->id_role;?>">
+                            <input id="nama_role" type="text" class="form-control" name="nama_role" placeholder="Nama Role" value="<?= $role->nama_role;?>" required>
+                            <input type="hidden" class="form-control" name="id_role" value="<?= $role->id_role;?>">
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -38,7 +37,6 @@
                     </div>
                     <!-- /.card-footer -->
                 </form>
-            <?php } ?>
             </div>
         </div>
       </div><!--/. container-fluid -->
