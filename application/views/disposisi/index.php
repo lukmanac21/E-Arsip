@@ -40,7 +40,7 @@
                                             <td style="text-align:center;"><?= $d->diteruskan_kepada; ?></td>
                                             <td style="text-align:center;"><?= $d->isi_disposisi; ?></td>
                                             <td style="text-align:center;">
-                                                <a style="color:white;" type="button" href="<?= site_url('Suratmasuk/edit_data/') . $d->id_disposisi; ?>" class="btn btn-info">
+                                                <a style="color:white;" type="button" href="<?= site_url('Disposisi/cetak/') . $d->id_disposisi; ?>" class="btn btn-info">
                                                     Cetak
                                                 </a>
                                             </td>

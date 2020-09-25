@@ -8,7 +8,7 @@ class Disposisi extends CI_Controller
         parent::__construct();
         $this->load->model('main');
         $this->load->library('session');
-        if (!$this->session->has_userdata('id_user')) {
+        if ($this->session->userdata['logged_in'] == FALSE) {
             redirect('Login');
         }
     }
@@ -19,6 +19,21 @@ class Disposisi extends CI_Controller
         $data['disposisi']      = $this->main->get_data_join('mst_disposisi', 'mst_surat_masuk', 'mst_surat_masuk.id_surat_masuk = mst_disposisi.id_surat');
 
         $this->load->view('disposisi/index', $data);
+    }
+    public function cetak($id_disposisi){
+        $where                  = ['mst_disposisi.id_disposisi' => $id_disposisi];
+        $mpdf                   = new \Mpdf\Mpdf();
+        $data['disposisi']      = $this->main->get_data_disposisi($where);
+        $str = $this->db->last_query();
+   
+        echo "<pre>";
+        print_r($str);
+        exit;
+        //var_dump($data['disposisi']);
+		// $html                   = $this->load->view('laporan/disposisi',[],true);
+
+        // $mpdf->WriteHTML($html);
+		// $mpdf->Output();
     }
     public function add_data()
     {
@@ -54,7 +69,7 @@ class Disposisi extends CI_Controller
         $data['tgl_disposisi']          = $this->input->post('tgl_disposisi');
         $data['diteruskan_kepada']      = $this->input->post('diteruskan_kepada');
         $data['isi_disposisi']          = $this->input->post('isi_disposisi');
-        $data['created_by']             = $this->session->has_userdata('id_user');
+        $data['created_by']             = $this->session->userdata('id_user');
         $where['id_disposisi']          = $this->input->post('id_disposisi');
 
         $this->main->update_data('mst_disposisi', $data, $where);
