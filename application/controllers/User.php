@@ -13,16 +13,15 @@ class user extends CI_Controller {
 	public function index()
 	{
         $id_role 				= $this->session->userdata('id_role');
-        $id_dinas               = $this->session->userdata('id_dinas');
 		$data['menu'] 			= $this->main->get_menu_selected($id_role); 
-        $data['user'] 			= $this->main->get_data_two_join_by_dinas('tbl_user','tbl_role','tbl_user.id_role = tbl_role.id_role','tbl_bagian','tbl_user.id_bagian = tbl_bagian.id_bagian',$id_dinas); 
-		$this->load->view('user',$data);
+        $data['user'] 			= $this->main->get_data_join('mst_user','mst_role','mst_user.id_role = mst_role.id_role');
+		$this->load->view('User/index',$data);
 	}
 	public function add_data(){
 		$id_role 				= $this->session->userdata('id_role');
         $data['menu'] 			= $this->main->get_menu_selected($id_role); 
-        $data['role']           = $this->main->get_data_where('tbl_role','id_role != 1');
-		$this->load->view('user_tambah',$data);
+        $data['role']           = $this->main->get_data('mst_role');
+		$this->load->view('User/tambah',$data);
 	}
 	public function save_data(){
         $data['id_role'] 	    = $this->input->post('id_role');

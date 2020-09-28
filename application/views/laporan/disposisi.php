@@ -81,7 +81,7 @@
                 <td width="140" height="40" class="dari none-border-top">PERIHAL</td>
                 <td width="20" class="titik2 none-border-top">:</td>
                 <td width="175" class="isi none-border-top">Permohonan Periode data inesia tingkat print ala ale olang</td>
-                <td width="140" class="diterima none-border-top">Diteruskan kepada</td>
+                <td width="140" class="diterima none-border-top">1</td>
                 <td width="20" class="titik2 none-border-top">:</td>
                 <td width="175" class="isi2 none-border-top"></td>
             </tr>
