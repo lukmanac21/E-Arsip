@@ -38,16 +38,16 @@
                                             <td style="text-align:center;"><?= $d->isi_disposisi; ?></td>
                                             <td style="text-align:center;">
                                                 <?php if ($d->id_paraf_kepala == NULL) : ?>
-                                                    <div class="badge badge-danger">Belum Verifikasi</div>
+                                                    Belum Verifikasi
                                                 <?php else : ?>
-                                                    <div class="badge badge-success">Sudah Verifikasi</div>
+                                                    Sudah Verifikasi
                                                 <?php endif; ?>
                                             </td>
                                             <td style="text-align:center;">
                                                 <?php if ($d->id_paraf_kepala == NULL) : ?>
-                                                    <a href="<?= site_url('DisposisiKepala/verif/') . $d->id_disposisi ?>" class="btn btn-outline-success btn-sm"><i class="far fa-check-circle"></i> Verif</a>
+                                                    <a type="button" href="<?= site_url('DisposisiKepala/verif/') . $d->id_disposisi ?>" class="btn btn-outline-success btn-sm"><i class="far fa-check-circle"></i> Verif</a>
                                                 <?php else : ?>
-                                                    <a href="<?= site_url('DisposisiKepala/batal_verif/') . $d->id_disposisi ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-times-circle"></i> Batal</a>
+                                                    <a type="button" href="<?= site_url('DisposisiKepala/batal_verif/') . $d->id_disposisi ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-times-circle"></i> Batal</a>
                                                 <?php endif; ?>
                                             </td>
                                             <td style="text-align:center;">
