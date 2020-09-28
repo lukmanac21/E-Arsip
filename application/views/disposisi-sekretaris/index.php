@@ -38,9 +38,9 @@
                                             <td style="text-align:center;"><?= $d->isi_disposisi; ?></td>
                                             <td style="text-align:center;">
                                                 <?php if ($d->id_paraf_sek == NULL) : ?>
-                                                    <div class="badge badge-danger">Belum Verifikasi</div>
+                                                    Belum Verifikasi
                                                 <?php else : ?>
-                                                    <div class="badge badge-success">Sudah Verifikasi</div>
+                                                    Sudah Verifikasi
                                                 <?php endif; ?>
                                             </td>
                                             <td style="text-align:center;">
