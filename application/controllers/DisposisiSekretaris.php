@@ -31,12 +31,8 @@ class DisposisiSekretaris extends CI_Controller
     }
     public function update_data()
     {
-        //ambil role kepala kecamatan
-        $where_sek                      = ['id_role' => $this->session->userdata('id_role')];
-        $sek                            = $this->main->get_data_where('mst_paraf', $where_sek);
         $data['diteruskan_kepada']      = $this->input->post('diteruskan_kepada');
         $data['isi_disposisi']          = $this->input->post('isi_disposisi');
-        $data['id_paraf_sek']           = $sek->id_paraf;
         $where['id_disposisi']          = $this->input->post('id_disposisi');
 
         $this->main->update_data('mst_disposisi', $data, $where);
@@ -46,6 +42,17 @@ class DisposisiSekretaris extends CI_Controller
     public function batal_verif($id_disposisi)
     {
         $data['id_paraf_sek']        = NULL;
+        $where['id_disposisi']          = $id_disposisi;
+        $this->main->update_data('mst_disposisi', $data, $where);
+        redirect('DisposisiSekretaris/index');
+    }
+
+    public function verif($id_disposisi)
+    {
+        //ambil role kepala kecamatan
+        $where_sek                      = ['id_role' => $this->session->userdata('id_role')];
+        $sek                            = $this->main->get_data_where('mst_paraf', $where_sek);
+        $data['id_paraf_sek']           = $sek->id_paraf;
         $where['id_disposisi']          = $id_disposisi;
         $this->main->update_data('mst_disposisi', $data, $where);
         redirect('DisposisiSekretaris/index');

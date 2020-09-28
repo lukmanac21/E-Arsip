@@ -35,7 +35,7 @@ CREATE TABLE `mst_disposisi` (
 /*Data for the table `mst_disposisi` */
 
 insert  into `mst_disposisi`(`id_disposisi`,`id_surat`,`tgl_disposisi`,`diteruskan_kepada`,`isi_disposisi`,`id_paraf_kepala`,`id_paraf_sek`,`created_by`) values 
-(4,3,'2020-09-24','<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>','Where are you going man, buwung apa tu?',NULL,NULL,1);
+(4,3,'2020-09-24','<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>','Where are you going man, buwung apa tu?',3,4,2);
 
 /*Table structure for table `mst_menu` */
 
@@ -69,8 +69,8 @@ CREATE TABLE `mst_paraf` (
 /*Data for the table `mst_paraf` */
 
 insert  into `mst_paraf`(`id_paraf`,`nama_paraf`,`img_paraf`,`id_role`) values 
-(3,'Lukman, ST.MT','ttd-rini.png',4),
-(4,'Huda, ST.MT','logo-rsbs.jpg',5);
+(3,'Lukman, ST.MT','web.png',4),
+(4,'Huda, ST.MT','LOGO_POLITEKNIK_NEGERI_JEMBER.png',5);
 
 /*Table structure for table `mst_role` */
 
@@ -185,7 +185,7 @@ CREATE TABLE `mst_user_access` (
   `id_role` int(11) NOT NULL,
   `id_sub_menu` int(11) NOT NULL,
   PRIMARY KEY (`id_user_access`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mst_user_access` */
 
@@ -200,7 +200,8 @@ insert  into `mst_user_access`(`id_user_access`,`id_role`,`id_sub_menu`) values
 (36,1,1),
 (37,4,21),
 (38,3,18),
-(39,1,22);
+(39,1,22),
+(40,5,22);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

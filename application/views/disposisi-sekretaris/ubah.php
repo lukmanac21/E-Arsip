@@ -54,7 +54,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Simpan & Verifikasi</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                     <button type="reset" class="btn btn-default float-right">Reset</button>
                                 </div>
                                 <!-- /.card-footer -->
