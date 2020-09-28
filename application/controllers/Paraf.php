@@ -62,7 +62,7 @@ class Paraf extends CI_Controller
         $data['id_role']        = $this->input->post('jabatan');
         $gambarLama             = $this->input->post('gambarLama');
 
-        $upload                 = $this->main->upload_file_surat();
+        $upload                 = $this->main->upload_file_paraf();
         if ($upload['result'] == "success") { // Jika proses upload sukses
             $images = $upload['file']['file_name'];
             if (file_exists('./assets/img/paraf/' . $gambarLama)) {

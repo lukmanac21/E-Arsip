@@ -37,7 +37,6 @@ class DisposisiSekretaris extends CI_Controller
         $data['diteruskan_kepada']      = $this->input->post('diteruskan_kepada');
         $data['isi_disposisi']          = $this->input->post('isi_disposisi');
         $data['id_paraf_sek']           = $sek->id_paraf;
-        $data['created_by']             = $this->session->userdata('id_user');
         $where['id_disposisi']          = $this->input->post('id_disposisi');
 
         $this->main->update_data('mst_disposisi', $data, $where);

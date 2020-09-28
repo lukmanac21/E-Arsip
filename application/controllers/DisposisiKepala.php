@@ -32,20 +32,16 @@ class DisposisiKepala extends CI_Controller
     public function update_data()
     {
         //ambil role kepala kecamatan
-        // $where_kepala                   = ['id_role' => $this->session->userdata('id_role')];
-        // $kepala                         = $this->main->get_data_where('mst_paraf', $where_kepala);
-        $id_role                = $this->session->userdata('id_role');
-        var_dump($id_role);
-        // $where                          = ['id_role' => $this->session->userdata('id_role')];
-        // $kepala                         = $this->main->get_data_where('mst_paraf', $where);
+        $where_kepala                   = ['id_role' => $this->session->userdata('id_role')];
+        $kepala                         = $this->main->get_data_where('mst_paraf', $where_kepala);
 
-        // $data['diteruskan_kepada']      = $this->input->post('diteruskan_kepada');
-        // $data['isi_disposisi']          = $this->input->post('isi_disposisi');
-        // $data['id_paraf_kepala']        = $kepala->id_paraf;
-        // $where['id_disposisi']          = $this->input->post('id_disposisi');
+        $data['diteruskan_kepada']      = $this->input->post('diteruskan_kepada');
+        $data['isi_disposisi']          = $this->input->post('isi_disposisi');
+        $data['id_paraf_kepala']        = $kepala->id_paraf;
+        $where['id_disposisi']          = $this->input->post('id_disposisi');
 
-        // $this->main->update_data('mst_disposisi', $data, $where);
-        //redirect('DisposisiKepala/index');
+        $this->main->update_data('mst_disposisi', $data, $where);
+        redirect('DisposisiKepala/index');
     }
 
     public function batal_verif($id_disposisi)

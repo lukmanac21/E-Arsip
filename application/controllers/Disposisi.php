@@ -28,7 +28,7 @@ class Disposisi extends CI_Controller
         $html                   = $this->load->view('laporan/disposisi', $data, true);
 
         $mpdf->WriteHTML($html);
-        $mpdf->Output();
+        $mpdf->Output($data['disposisi']->perihal_surat . "-" . date("d-m-Y", strtotime($data['disposisi']->tgl_disposisi)), 'I');
     }
     public function add_data()
     {
