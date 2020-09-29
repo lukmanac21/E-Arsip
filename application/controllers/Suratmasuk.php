@@ -50,10 +50,10 @@ class Suratmasuk extends CI_Controller
     }
     public function edit_data($id_surat_masuk)
     {
-        $id_role                = $this->session->userdata('id_role');
-        $data['menu']             = $this->main->get_menu_selected($id_role);
-        $where                     = ['id_surat_masuk' => $id_surat_masuk];
-        $data['surat_masuk']         = $this->main->get_data_where('mst_surat_masuk', $where);
+        $id_role                    = $this->session->userdata('id_role');
+        $data['menu']               = $this->main->get_menu_selected($id_role);
+        $where                      = ['id_surat_masuk' => $id_surat_masuk];
+        $data['surat_masuk']        = $this->main->get_data_where('mst_surat_masuk', $where);
 
         $this->load->view('suratmasuk/ubah', $data);
     }
