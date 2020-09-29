@@ -24,9 +24,9 @@ class Disposisi extends CI_Controller
     {
         $where                  = ['mst_disposisi.id_disposisi' => $id_disposisi];
         $mpdf                   = new \Mpdf\Mpdf(['format' => 'A4']);
-        $data['disposisi']      = $this->main->get_data_disposisi($where);
+        $data['disposisi']      = $this->main->get_data_disposisi_array($where);
         $html                   = $this->load->view('laporan/disposisi', $data, true);
-        $file_name              = $data['disposisi']->perihal_surat . "-" . date("d-m-Y", strtotime($data['disposisi']->tgl_disposisi)) . ".pdf";
+        $file_name              = $data['disposisi']['perihal_surat'] . "-" . date("d-m-Y", strtotime($data['disposisi']['tgl_disposisi'])) . ".pdf";
         //echo $this->db->last_query(); 
         $mpdf->WriteHTML($html);
         $mpdf->Output($file_name, \Mpdf\Output\Destination::INLINE);

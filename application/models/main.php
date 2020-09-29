@@ -57,6 +57,17 @@ class main extends CI_MODEL
             ->get();
         return $query->row();
     }
+    function get_data_disposisi_array($where)
+    {
+        $query = $this->db->select('mst_surat_masuk.pengirim_surat , mst_surat_masuk.tgl_surat , mst_surat_masuk.no_surat , mst_surat_masuk.perihal_surat , mst_surat_masuk.tgl_terima_surat , mst_surat_masuk.no_agenda_surat , sekretaris.nama_paraf as nama_sekretaris , kepala.nama_paraf as nama_kepala , mst_disposisi.isi_disposisi, mst_disposisi.tgl_disposisi, mst_disposisi.diteruskan_kepada, sekretaris.img_paraf as paraf_sekretaris, kepala.img_paraf as paraf_kepala')
+            ->from('mst_disposisi')
+            ->join('mst_surat_masuk', 'mst_disposisi.id_surat = mst_surat_masuk.id_surat_masuk')
+            ->join('mst_paraf as kepala', 'mst_disposisi.id_paraf_kepala = kepala.id_paraf')
+            ->join('mst_paraf as sekretaris', 'mst_disposisi.id_paraf_sek = sekretaris.id_paraf')
+            ->where($where)
+            ->get();
+        return $query->row_array();
+    }
     function get_data_join_where($table, $table_join, $where_join, $where)
     {
         $query = $this->db->select('*')->from($table)->join($table_join, $where_join)->where($where)->get();
