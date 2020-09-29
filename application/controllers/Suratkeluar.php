@@ -14,16 +14,17 @@ class Suratkeluar extends CI_Controller
     }
     public function index()
     {
-        $id_role                = $this->session->userdata('id_role');
-        $data['menu']             = $this->main->get_menu_selected($id_role);
-        $data['surat_masuk']   = $this->main->get_data('mst_surat_masuk');
+        $id_role                        = $this->session->userdata('id_role');
+        $data['menu']                   = $this->main->get_menu_selected($id_role);
+        $data['surat_keluar']           = $this->main->get_data('mst_surat_keluar');
 
         $this->load->view('Suratkeluar/index', $data);
     }
     public function add_data()
     {
-        $id_role                = $this->session->userdata('id_role');
-        $data['menu']             = $this->main->get_menu_selected($id_role);
+        $id_role                        = $this->session->userdata('id_role');
+        $data['menu']                   = $this->main->get_menu_selected($id_role);
+        $data['opd']                    = $this->main->get_data('mst_opd');
 
         $this->load->view('Suratkeluar/tambah', $data);
     }
@@ -31,19 +32,9 @@ class Suratkeluar extends CI_Controller
     {
         $data['no_surat']               = $this->input->post('no_surat');
         $data['tgl_surat']              = $this->input->post('tgl_surat');
-        $data['pengirim_surat']         = $this->input->post('pengirim_surat');
+        $data['id_opd']                 = $this->input->post('id_opd');
         $data['perihal_surat']          = $this->input->post('perihal_surat');
-        $data['tgl_terima_surat']       = $this->input->post('tgl_terima_surat');
-        $data['no_agenda_surat']       = $this->input->post('no_agenda_surat');
-        $images                         = "";
-        $upload                         = $this->main->upload_file_surat();
-        if ($upload['result'] == "success") { // Jika proses upload sukses
-            $images = $upload['file']['file_name'];
-        } else { // Jika proses upload gagal
-            var_dump($upload['error']); // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
-        }
-
-        $data['bukti_surat']         = $images ? $images : '';
+        $data['isi_surat']              = $this->input->post('isi_surat');
 
         $this->main->insert_data('mst_surat_masuk', $data);
         redirect('Suratkeluar/index');
