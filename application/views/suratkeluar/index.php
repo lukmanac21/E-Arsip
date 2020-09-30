@@ -42,10 +42,12 @@
                                             <td style="text-align:center;"><?= $sk->perihal; ?></td>
                                             <td style="text-align:center;"><?= $sk->tgl_surat; ?></td>
                                             <td style="text-align:center;">
-                                                <button data-toggle="modal" data-target="#suratModal" class="btn btn-success">Lihat</button>
+                                            <a style="color:white;" type="button" href="<?= site_url('Suratkeluar/cetak_data/') . $sk->id_surat_keluar; ?>" class="btn btn-primary">
+                                                    Cetak
+                                                </a>
                                             </td>
                                             <td style="text-align:center;">
-                                                <a style="color:white;" type="button" href="<?= site_url('Suratmasuk/edit_data/') . $sk->id_surat_keluar; ?>" class="btn btn-info">
+                                                <a style="color:white;" type="button" href="<?= site_url('Suratkeluar/edit_data/') . $sk->id_surat_keluar; ?>" class="btn btn-info">
                                                     Ubah
                                                 </a>
                                             </td>

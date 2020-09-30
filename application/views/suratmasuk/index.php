@@ -44,7 +44,7 @@
                                             <td style="text-align:center;"><?= $sm->tgl_terima_surat; ?></td>
                                             <td style="text-align:center;"><?= $sm->perihal_surat; ?></td>
                                             <td style="text-align:center;">
-                                                <button data-toggle="modal" data-target="#suratModal" class="btn btn-success">Bukti</button>
+                                                <button data-toggle="modal" type="button" data-target="#suratModal" class="btn btn-success">Bukti</button>
                                             </td>
                                             <td style="text-align:center;">
                                                 <a style="color:white;" type="button" href="<?= site_url('Suratmasuk/edit_data/') . $sm->id_surat_masuk; ?>" class="btn btn-info">

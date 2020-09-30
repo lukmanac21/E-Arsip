@@ -28,6 +28,15 @@ class Suratkeluar extends CI_Controller
 
         $this->load->view('Suratkeluar/tambah', $data);
     }
+    public function cetak_data($id_surat_keluar){
+        $where                          = ['mst_surat_keluar.id_surat_keluar' => $id_surat_keluar];
+        $data['surat_keluar']           = $this->main->get_data_two_join_where_array('mst_surat_keluar','mst_jenis','mst_surat_keluar.id_jenis = mst_jenis.id_jenis','mst_opd','mst_surat_keluar.id_opd = mst_opd.id_opd',$where);
+        $mpdf                           = new \Mpdf\Mpdf(['format' => 'A4']);
+        $html                           = $this->load->view('laporan/surat_keluar', $data, true);
+        $file_name                      = $data['surat_keluar']['perihal_surat'] . "-" . date("d-m-Y", strtotime($data['surat_keluar']['tgl_surat'])) . ".pdf";
+        $mpdf->WriteHTML($html);
+        $mpdf->Output($file_name, \Mpdf\Output\Destination::INLINE);
+    }
     public function save_data()
     {
         $data['no_surat']               = $this->input->post('no_surat');
