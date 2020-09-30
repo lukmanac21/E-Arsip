@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2020 at 10:20 AM
+-- Generation Time: Sep 30, 2020 at 07:50 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -48,6 +48,36 @@ INSERT INTO `mst_disposisi` (`id_disposisi`, `id_surat`, `tgl_disposisi`, `diter
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mst_function`
+--
+
+CREATE TABLE `mst_function` (
+  `id_function` int(11) NOT NULL,
+  `nama_function` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mst_jenis`
+--
+
+CREATE TABLE `mst_jenis` (
+  `id_jenis` int(11) NOT NULL,
+  `nama_jenis` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mst_jenis`
+--
+
+INSERT INTO `mst_jenis` (`id_jenis`, `nama_jenis`) VALUES
+(1, 'Surat Pengantar'),
+(2, 'Surat Resmi');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mst_menu`
 --
 
@@ -75,6 +105,16 @@ CREATE TABLE `mst_opd` (
   `id_opd` int(11) NOT NULL,
   `nama_opd` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mst_opd`
+--
+
+INSERT INTO `mst_opd` (`id_opd`, `nama_opd`) VALUES
+(4, 'Dinas Pendidikan'),
+(5, 'Dinas Kebudayaan, Pariwisata, Kepemudaan dan Olahraga'),
+(6, 'Dinas Kesehatan'),
+(7, 'Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak');
 
 -- --------------------------------------------------------
 
@@ -167,7 +207,8 @@ INSERT INTO `mst_sub_menu` (`id_sub_menu`, `id_menu`, `nama_sub_menu`, `link_sub
 (19, 1, 'Master Paraf', 'Paraf/index'),
 (21, 2, 'Disposisi Kepala', 'DisposisiKepala/index'),
 (22, 2, 'Disposisi Sekretaris', 'DisposisiSekretaris/index'),
-(23, 1, 'Master User', 'User/index');
+(23, 1, 'Master User', 'User/index'),
+(24, 1, 'Master OPD', 'OPD/index');
 
 -- --------------------------------------------------------
 
@@ -180,10 +221,19 @@ CREATE TABLE `mst_surat_keluar` (
   `id_jenis` int(11) NOT NULL,
   `id_opd` int(11) NOT NULL,
   `perihal` varchar(255) NOT NULL,
+  `no_surat` varchar(255) NOT NULL,
+  `sifat` varchar(255) NOT NULL,
   `tgl_surat` date NOT NULL,
   `isi_surat` text NOT NULL,
   `id_paraf` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mst_surat_keluar`
+--
+
+INSERT INTO `mst_surat_keluar` (`id_surat_keluar`, `id_jenis`, `id_opd`, `perihal`, `no_surat`, `sifat`, `tgl_surat`, `isi_surat`, `id_paraf`) VALUES
+(1, 1, 4, 'Usulan Pergantian Bendahara', '182-20321-234', 'Penting', '2020-09-30', '<p class=\"MsoListParagraphCxSpFirst\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify\">Dengan hormat, <o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Berdasarkan informasi yang kami terima\r\ndari Kepala Satpol PP Kabupaten Bogor yang menginformasikan bahwa PT Elang Sejahtera\r\nsaat ini memasang baliho di Jl Raya Bogor Km 35. Baliho tersebut saat ini belum\r\ndibayarkan pajaknya senilai <b>Rp. 5.250.000\r\n(Lima Juta Dua Ratus Lima Puluh Ribu)</b>.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Untuk itu dengan masuknya surat ini kami\r\nbermaksud untuk menagih biaya pajak reklame tersebut. Kami memberikan waktu\r\nhingga 30 September 2019 untuk pihak kantor bapak bisa menyelesaikan\r\npermasalahan ini. Jika dalam waktu yang sudah ditentukan tidak ada respon balik\r\ndari perwakilan perusahaan maka kami akan menindak dengan mencopot baliho tersebut.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpLast\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Demikianlah informasi ini kami sampaikan\r\nagar menjadi perhatian bagi perusahaan bapak. Atas perhatian dan kerjasamanya\r\nkami ucapkan terima kasih.<o:p></o:p></p>                        ', 0);
 
 -- --------------------------------------------------------
 
@@ -262,7 +312,20 @@ INSERT INTO `mst_user_access` (`id_user_access`, `id_role`, `id_sub_menu`) VALUE
 (38, 3, 18),
 (39, 1, 22),
 (40, 5, 22),
-(41, 1, 23);
+(41, 1, 23),
+(42, 1, 24);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mst_user_function`
+--
+
+CREATE TABLE `mst_user_function` (
+  `id_user_function` int(11) NOT NULL,
+  `id_user_access` int(11) NOT NULL,
+  `id_function` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -273,6 +336,18 @@ INSERT INTO `mst_user_access` (`id_user_access`, `id_role`, `id_sub_menu`) VALUE
 --
 ALTER TABLE `mst_disposisi`
   ADD PRIMARY KEY (`id_disposisi`);
+
+--
+-- Indexes for table `mst_function`
+--
+ALTER TABLE `mst_function`
+  ADD PRIMARY KEY (`id_function`);
+
+--
+-- Indexes for table `mst_jenis`
+--
+ALTER TABLE `mst_jenis`
+  ADD PRIMARY KEY (`id_jenis`);
 
 --
 -- Indexes for table `mst_menu`
@@ -335,6 +410,12 @@ ALTER TABLE `mst_user_access`
   ADD PRIMARY KEY (`id_user_access`);
 
 --
+-- Indexes for table `mst_user_function`
+--
+ALTER TABLE `mst_user_function`
+  ADD PRIMARY KEY (`id_user_function`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -343,6 +424,18 @@ ALTER TABLE `mst_user_access`
 --
 ALTER TABLE `mst_disposisi`
   MODIFY `id_disposisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `mst_function`
+--
+ALTER TABLE `mst_function`
+  MODIFY `id_function` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `mst_jenis`
+--
+ALTER TABLE `mst_jenis`
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mst_menu`
@@ -354,7 +447,7 @@ ALTER TABLE `mst_menu`
 -- AUTO_INCREMENT for table `mst_opd`
 --
 ALTER TABLE `mst_opd`
-  MODIFY `id_opd` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_opd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mst_paraf`
@@ -378,13 +471,13 @@ ALTER TABLE `mst_status`
 -- AUTO_INCREMENT for table `mst_sub_menu`
 --
 ALTER TABLE `mst_sub_menu`
-  MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `mst_surat_keluar`
 --
 ALTER TABLE `mst_surat_keluar`
-  MODIFY `id_surat_keluar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_surat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mst_surat_masuk`
@@ -402,7 +495,13 @@ ALTER TABLE `mst_user`
 -- AUTO_INCREMENT for table `mst_user_access`
 --
 ALTER TABLE `mst_user_access`
-  MODIFY `id_user_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_user_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `mst_user_function`
+--
+ALTER TABLE `mst_user_function`
+  MODIFY `id_user_function` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

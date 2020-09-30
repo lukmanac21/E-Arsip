@@ -16,7 +16,7 @@ class Suratkeluar extends CI_Controller
     {
         $id_role                        = $this->session->userdata('id_role');
         $data['menu']                   = $this->main->get_menu_selected($id_role);
-        $data['surat_keluar']           = $this->main->get_data('mst_surat_keluar');
+        $data['surat_keluar']           = $this->main->get_data_two_join('mst_surat_keluar','mst_jenis','mst_surat_keluar.id_jenis = mst_jenis.id_jenis','mst_opd','mst_surat_keluar.id_opd = mst_opd.id_opd');
 
         $this->load->view('Suratkeluar/index', $data);
     }
@@ -33,10 +33,12 @@ class Suratkeluar extends CI_Controller
         $data['no_surat']               = $this->input->post('no_surat');
         $data['tgl_surat']              = $this->input->post('tgl_surat');
         $data['id_opd']                 = $this->input->post('id_opd');
-        $data['perihal_surat']          = $this->input->post('perihal_surat');
+        $data['id_jenis']               = $this->input->post('id_jenis');
+        $data['perihal']                = $this->input->post('perihal');
+        $data['sifat']                  = $this->input->post('sifat');
         $data['isi_surat']              = $this->input->post('isi_surat');
 
-        $this->main->insert_data('mst_surat_masuk', $data);
+        $this->main->insert_data('mst_surat_keluar', $data);
         redirect('Suratkeluar/index');
     }
     public function edit_data($id_surat_masuk)
@@ -44,7 +46,7 @@ class Suratkeluar extends CI_Controller
         $id_role                    = $this->session->userdata('id_role');
         $data['menu']               = $this->main->get_menu_selected($id_role);
         $where                      = ['id_surat_masuk' => $id_surat_masuk];
-        $data['surat_masuk']        = $this->main->get_data_where('mst_surat_masuk', $where);
+        $data['surat_masuk']        = $this->main->get_data_where('mst_surat_keluar', $where);
 
         $this->load->view('Suratkeluar/ubah', $data);
     }
@@ -71,17 +73,8 @@ class Suratkeluar extends CI_Controller
 
         $data['bukti_surat']         = $images;
 
-        $this->main->update_data('mst_surat_masuk', $data, $where);
+        $this->main->update_data('mst_surat_keluar', $data, $where);
         redirect('Suratkeluar/index');
     }
-    public function delete_data()
-    {
-        $where['id_surat_masuk']         = $this->input->post('id_surat_masuk');
-        $gambarLama                      = $this->input->post('gambarLama');
-        if (file_exists('./assets/img/suratkeluar/' . $gambarLama)) {
-            unlink('./assets/img/suratmasuk/' . $gambarLama);
-        }
-        $this->main->delete_data('mst_surat_masuk', $where);
-        redirect('Suratkeluar/index');
-    }
+
 }

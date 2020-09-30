@@ -23,33 +23,35 @@
                                 <br>
                                 <thead>
                                     <tr>
+                                        <th style="text-align:center;">Jenis</th>
                                         <th style="text-align:center;">Nomer Surat</th>
                                         <th style="text-align:center;">OPD</th>
                                         <th style="text-align:center;">Perihal</th>
                                         <th style="text-align:center;">Tanggal dibuat</th>
-                                        <th style="text-align:center;">Isi Surat</th>
+                                        <th style="text-align:center;">Cetak</th>
                                         <th style="text-align:center;">Ubah</th>
-                                        <th style="text-align:center;">Hapus</th>
+                                        <th style="text-align:center;">Paraf</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($surat_keluar as $sm) { ?>
+                                    <?php foreach ($surat_keluar as $sk) { ?>
                                         <tr>
-                                            <td style="text-align:center;"><?= $sm->no_surat; ?></td>
-                                            <td style="text-align:center;"><?= $sm->pengirim_surat; ?></td>
-                                            <td style="text-align:center;"><?= $sm->perihal_surat; ?></td>
-                                            <td style="text-align:center;"><?= $sm->tgl_terima_surat; ?></td>
+                                            <td style="text-align:center;"><?= $sk->nama_jenis; ?></td>
+                                            <td style="text-align:center;"><?= $sk->no_surat; ?></td>
+                                            <td style="text-align:center;"><?= $sk->nama_opd; ?></td>
+                                            <td style="text-align:center;"><?= $sk->perihal; ?></td>
+                                            <td style="text-align:center;"><?= $sk->tgl_surat; ?></td>
                                             <td style="text-align:center;">
                                                 <button data-toggle="modal" data-target="#suratModal" class="btn btn-success">Lihat</button>
                                             </td>
                                             <td style="text-align:center;">
-                                                <a style="color:white;" type="button" href="<?= site_url('Suratmasuk/edit_data/') . $sm->id_surat_keluar; ?>" class="btn btn-info">
+                                                <a style="color:white;" type="button" href="<?= site_url('Suratmasuk/edit_data/') . $sk->id_surat_keluar; ?>" class="btn btn-info">
                                                     Ubah
                                                 </a>
                                             </td>
                                             <td style="text-align:center;">
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $sm->id_surat_keluar ?>">
-                                                    Hapus
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $sk->id_surat_keluar ?>">
+                                                    Paraf
                                                 </button>
                                             </td>
                                         </tr>
@@ -59,51 +61,6 @@
                         </div>
                     </div>
             </section>
-            <?php foreach ($surat_keluar as $sm) { ?>
-                <div class="modal fade" id="delete<?= $sm->id_surat_keluar ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Hapus Data</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="post" action="<?= site_url('Suratmasuk/delete_data'); ?>">
-                                <div class="modal-body">
-                                    <p>Hapus data dengan nomer surat <?= $sm->no_surat ?> ? </p>
-                                    <input type="hidden" name="id_surat_keluar" value="<?= $sm->id_surat_keluar; ?>">
-                                    <input type="hidden" name="gambarLama" value="<?= $sm->bukti_surat; ?>">
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary">Hapus</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="suratModal" tabindex="-1" aria-labelledby="suratModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><b>Bukti Surat</b></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="<?= base_url('assets/img/suratmasuk/') . $sm->bukti_surat ?>" width="100%" height="850px">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
         </div>
         <aside class="control-sidebar control-sidebar-dark">
         </aside>
