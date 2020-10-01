@@ -92,6 +92,11 @@
             <td style="text-align:left; font-size: 13px;  margin-bottom:0px; padding-bottom:0px; padding-left: 480px">Kepada</td>
             </tr>
         </table>
+        <table class="table-header" cellspacing="0" cellpadding="0">
+            <tr><td style="font-size: 13px;">Nomor </td><td style="font-size: 13px;"> &nbsp; :</td><td style="font-size: 13px;"> &nbsp; <?= $surat_keluar['no_surat']?></td></tr>
+            <tr><td style="font-size: 13px;">Sifat</td><td style="font-size: 13px;"> &nbsp; :</td><td style="font-size: 13px;"> &nbsp; <?= $surat_keluar['sifat']?></td></tr>
+            <tr><td style="font-size: 13px;">Perihal</td><td style="font-size: 13px;"> &nbsp; :</td><td style="font-size: 13px;"> &nbsp; <?= $surat_keluar['perihal']?></td></tr>
+        </table>
     </div>
     <div class="footer">
         <!-- <table border="0" class="ttd">
