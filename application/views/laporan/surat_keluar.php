@@ -104,15 +104,15 @@
                 <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;">Nomor </td>
                 <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> &nbsp; :</td>
                 <td width="200" style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> &nbsp; <?= $surat_keluar['no_surat'] ?></td>
-                <td width="210" style="font-size: 13px; margin-bottom:5px; padding-bottom:5px; text-align:right;"> Yth.</td>
-                <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> Bapak Bupati Bondowoso</td>
+                <td width="210" style="font-size: 13px; margin-bottom:5px; padding-bottom:5px; text-align:right;padding-right: 5px"> Yth.Sdr.</td>
+                <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> <?= $surat_keluar['nama_bagian'] . " " . $surat_keluar['nama_opd'] ?></td>
             </tr>
             <tr>
                 <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;">Sifat</td>
                 <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> &nbsp; :</td>
                 <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> &nbsp; <?= $surat_keluar['sifat'] ?></td>
-                <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px; text-align:right;"> C/q.</td>
-                <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> Bapak Sekretaris Daerah</td>
+                <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px; text-align:right;"> </td>
+                <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;"> </td>
             </tr>
             <tr>
                 <td style="font-size: 13px; margin-bottom:5px; padding-bottom:5px;">Lampiran</td>
