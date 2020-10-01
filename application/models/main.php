@@ -78,6 +78,11 @@ class main extends CI_MODEL
         $query = $this->db->select('*')->from($table)->join($table_join, $where_join)->join($table_joins, $where_joins)->where($where)->get();
         return $query->row_array();
     }
+    function get_data_three_join_where_array($table, $table_join, $where_join, $table_joins, $where_joins, $table_joinss, $where_joinss, $where)
+    {
+        $query = $this->db->select('*')->from($table)->join($table_join, $where_join)->join($table_joins, $where_joins)->join($table_joinss, $where_joinss)->where($where)->get();
+        return $query->row_array();
+    }
     function get_data_join_where($table, $table_join, $where_join, $where)
     {
         $query = $this->db->select('*')->from($table)->join($table_join, $where_join)->where($where)->get();
