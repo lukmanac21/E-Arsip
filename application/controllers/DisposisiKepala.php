@@ -17,6 +17,7 @@ class DisposisiKepala extends CI_Controller
         $id_role                = $this->session->userdata('id_role');
         $data['menu']           = $this->main->get_menu_selected($id_role);
         $data['disposisi']      = $this->main->get_data_join('mst_disposisi', 'mst_surat_masuk', 'mst_surat_masuk.id_surat_masuk = mst_disposisi.id_surat');
+        $data['surat_keluar']           = $this->main->get_data_two_join('mst_surat_keluar', 'mst_jenis', 'mst_surat_keluar.id_jenis = mst_jenis.id_jenis', 'mst_opd', 'mst_surat_keluar.id_opd = mst_opd.id_opd');
 
         $this->load->view('disposisi-kepala/index', $data);
     }
@@ -55,6 +56,25 @@ class DisposisiKepala extends CI_Controller
         $where['id_disposisi']          = $id_disposisi;
         $data['id_paraf_kepala']        = $kepala->id_paraf;
         $this->main->update_data('mst_disposisi', $data, $where);
+        redirect('DisposisiKepala/index');
+    }
+
+    public function verif_keluar($id_surat_keluar)
+    {
+        //ambil role kepala kecamatan
+        $where_kepala                   = ['id_role' => $this->session->userdata('id_role')];
+        $kepala                         = $this->main->get_data_where('mst_paraf', $where_kepala);
+        $where['id_surat_keluar']       = $id_surat_keluar;
+        $data['id_paraf']               = $kepala->id_paraf;
+        $this->main->update_data('mst_surat_keluar', $data, $where);
+        redirect('DisposisiKepala/index');
+    }
+
+    public function batal_verif_keluar($id_surat_keluar)
+    {
+        $data['id_paraf']               = 0;
+        $where['id_surat_keluar']       = $id_surat_keluar;
+        $this->main->update_data('mst_surat_keluar', $data, $where);
         redirect('DisposisiKepala/index');
     }
 }
