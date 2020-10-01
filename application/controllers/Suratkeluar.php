@@ -54,12 +54,12 @@ class Suratkeluar extends CI_Controller
         $this->main->insert_data('mst_surat_keluar', $data);
         redirect('Suratkeluar/index');
     }
-    public function edit_data($id_surat_masuk)
+    public function edit_data($id_surat_keluar)
     {
         $id_role                        = $this->session->userdata('id_role');
         $data['menu']                   = $this->main->get_menu_selected($id_role);
-        $where                          = ['id_surat_masuk' => $id_surat_masuk];
-        $data['surat_masuk']            = $this->main->get_data_where('mst_surat_keluar', $where);
+        $where                          = ['id_surat_keluar' => $id_surat_keluar];
+        $data['surat_keluar']           = $this->main->get_data_where('mst_surat_keluar', $where);
         $data['opd']                    = $this->main->get_data('mst_opd');
         $data['bagian']                 = $this->main->get_data('mst_bagian');
 
