@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2020 at 07:50 AM
+-- Generation Time: Oct 01, 2020 at 03:49 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_e-arsip`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mst_bagian`
+--
+
+CREATE TABLE `mst_bagian` (
+  `id_bagian` int(11) NOT NULL,
+  `nama_bagian` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mst_bagian`
+--
+
+INSERT INTO `mst_bagian` (`id_bagian`, `nama_bagian`) VALUES
+(1, 'Kepala Dinas'),
+(2, 'Sekretaris Dinas'),
+(3, 'Kepala Bagian Dinas');
 
 -- --------------------------------------------------------
 
@@ -43,7 +63,7 @@ CREATE TABLE `mst_disposisi` (
 --
 
 INSERT INTO `mst_disposisi` (`id_disposisi`, `id_surat`, `tgl_disposisi`, `diteruskan_kepada`, `isi_disposisi`, `id_paraf_kepala`, `id_paraf_sek`, `created_by`) VALUES
-(4, 3, '2020-09-24', '<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>', 'Where are you going man, buwung apa tu?', 3, 4, 2);
+(4, 3, '2020-09-24', '<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>', 'Where are you going man, buwung apa tu?', NULL, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -208,7 +228,8 @@ INSERT INTO `mst_sub_menu` (`id_sub_menu`, `id_menu`, `nama_sub_menu`, `link_sub
 (21, 2, 'Disposisi Kepala', 'DisposisiKepala/index'),
 (22, 2, 'Disposisi Sekretaris', 'DisposisiSekretaris/index'),
 (23, 1, 'Master User', 'User/index'),
-(24, 1, 'Master OPD', 'OPD/index');
+(24, 1, 'Master OPD', 'OPD/index'),
+(25, 1, 'Master Bagian', 'Bagian/index');
 
 -- --------------------------------------------------------
 
@@ -220,6 +241,7 @@ CREATE TABLE `mst_surat_keluar` (
   `id_surat_keluar` int(11) NOT NULL,
   `id_jenis` int(11) NOT NULL,
   `id_opd` int(11) NOT NULL,
+  `id_bagian` int(11) NOT NULL,
   `perihal` varchar(255) NOT NULL,
   `no_surat` varchar(255) NOT NULL,
   `sifat` varchar(255) NOT NULL,
@@ -232,8 +254,8 @@ CREATE TABLE `mst_surat_keluar` (
 -- Dumping data for table `mst_surat_keluar`
 --
 
-INSERT INTO `mst_surat_keluar` (`id_surat_keluar`, `id_jenis`, `id_opd`, `perihal`, `no_surat`, `sifat`, `tgl_surat`, `isi_surat`, `id_paraf`) VALUES
-(1, 1, 4, 'Usulan Pergantian Bendahara', '182-20321-234', 'Penting', '2020-09-30', '<p class=\"MsoListParagraphCxSpFirst\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify\">Dengan hormat, <o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Berdasarkan informasi yang kami terima\r\ndari Kepala Satpol PP Kabupaten Bogor yang menginformasikan bahwa PT Elang Sejahtera\r\nsaat ini memasang baliho di Jl Raya Bogor Km 35. Baliho tersebut saat ini belum\r\ndibayarkan pajaknya senilai <b>Rp. 5.250.000\r\n(Lima Juta Dua Ratus Lima Puluh Ribu)</b>.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Untuk itu dengan masuknya surat ini kami\r\nbermaksud untuk menagih biaya pajak reklame tersebut. Kami memberikan waktu\r\nhingga 30 September 2019 untuk pihak kantor bapak bisa menyelesaikan\r\npermasalahan ini. Jika dalam waktu yang sudah ditentukan tidak ada respon balik\r\ndari perwakilan perusahaan maka kami akan menindak dengan mencopot baliho tersebut.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpLast\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Demikianlah informasi ini kami sampaikan\r\nagar menjadi perhatian bagi perusahaan bapak. Atas perhatian dan kerjasamanya\r\nkami ucapkan terima kasih.<o:p></o:p></p>                        ', 0);
+INSERT INTO `mst_surat_keluar` (`id_surat_keluar`, `id_jenis`, `id_opd`, `id_bagian`, `perihal`, `no_surat`, `sifat`, `tgl_surat`, `isi_surat`, `id_paraf`) VALUES
+(1, 1, 4, 0, 'Usulan Pergantian Bendahara', '182-20321-234', 'Penting', '2020-09-30', '<p class=\"MsoListParagraphCxSpFirst\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify\">Dengan hormat, <o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Berdasarkan informasi yang kami terima\r\ndari Kepala Satpol PP Kabupaten Bogor yang menginformasikan bahwa PT Elang Sejahtera\r\nsaat ini memasang baliho di Jl Raya Bogor Km 35. Baliho tersebut saat ini belum\r\ndibayarkan pajaknya senilai <b>Rp. 5.250.000\r\n(Lima Juta Dua Ratus Lima Puluh Ribu)</b>.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Untuk itu dengan masuknya surat ini kami\r\nbermaksud untuk menagih biaya pajak reklame tersebut. Kami memberikan waktu\r\nhingga 30 September 2019 untuk pihak kantor bapak bisa menyelesaikan\r\npermasalahan ini. Jika dalam waktu yang sudah ditentukan tidak ada respon balik\r\ndari perwakilan perusahaan maka kami akan menindak dengan mencopot baliho tersebut.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpLast\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Demikianlah informasi ini kami sampaikan\r\nagar menjadi perhatian bagi perusahaan bapak. Atas perhatian dan kerjasamanya\r\nkami ucapkan terima kasih.<o:p></o:p></p>                        ', 0);
 
 -- --------------------------------------------------------
 
@@ -313,7 +335,15 @@ INSERT INTO `mst_user_access` (`id_user_access`, `id_role`, `id_sub_menu`) VALUE
 (39, 1, 22),
 (40, 5, 22),
 (41, 1, 23),
-(42, 1, 24);
+(42, 1, 24),
+(43, 2, 18),
+(44, 2, 24),
+(45, 2, 19),
+(46, 2, 12),
+(47, 2, 23),
+(48, 2, 16),
+(49, 2, 15),
+(50, 1, 25);
 
 -- --------------------------------------------------------
 
@@ -330,6 +360,12 @@ CREATE TABLE `mst_user_function` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `mst_bagian`
+--
+ALTER TABLE `mst_bagian`
+  ADD PRIMARY KEY (`id_bagian`);
 
 --
 -- Indexes for table `mst_disposisi`
@@ -420,6 +456,12 @@ ALTER TABLE `mst_user_function`
 --
 
 --
+-- AUTO_INCREMENT for table `mst_bagian`
+--
+ALTER TABLE `mst_bagian`
+  MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `mst_disposisi`
 --
 ALTER TABLE `mst_disposisi`
@@ -471,7 +513,7 @@ ALTER TABLE `mst_status`
 -- AUTO_INCREMENT for table `mst_sub_menu`
 --
 ALTER TABLE `mst_sub_menu`
-  MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `mst_surat_keluar`
@@ -495,7 +537,7 @@ ALTER TABLE `mst_user`
 -- AUTO_INCREMENT for table `mst_user_access`
 --
 ALTER TABLE `mst_user_access`
-  MODIFY `id_user_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_user_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `mst_user_function`
