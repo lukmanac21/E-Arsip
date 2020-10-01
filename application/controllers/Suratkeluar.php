@@ -25,6 +25,7 @@ class Suratkeluar extends CI_Controller
         $id_role                        = $this->session->userdata('id_role');
         $data['menu']                   = $this->main->get_menu_selected($id_role);
         $data['opd']                    = $this->main->get_data('mst_opd');
+        $data['bagian']                 = $this->main->get_data('mst_bagian');
 
         $this->load->view('Suratkeluar/tambah', $data);
     }
@@ -42,6 +43,7 @@ class Suratkeluar extends CI_Controller
         $data['no_surat']               = $this->input->post('no_surat');
         $data['tgl_surat']              = $this->input->post('tgl_surat');
         $data['id_opd']                 = $this->input->post('id_opd');
+        $data['id_bagian']              = $this->input->post('id_bagian');
         $data['id_jenis']               = $this->input->post('id_jenis');
         $data['perihal']                = $this->input->post('perihal');
         $data['sifat']                  = $this->input->post('sifat');
@@ -52,35 +54,27 @@ class Suratkeluar extends CI_Controller
     }
     public function edit_data($id_surat_masuk)
     {
-        $id_role                    = $this->session->userdata('id_role');
-        $data['menu']               = $this->main->get_menu_selected($id_role);
-        $where                      = ['id_surat_masuk' => $id_surat_masuk];
-        $data['surat_masuk']        = $this->main->get_data_where('mst_surat_keluar', $where);
+        $id_role                        = $this->session->userdata('id_role');
+        $data['menu']                   = $this->main->get_menu_selected($id_role);
+        $where                          = ['id_surat_masuk' => $id_surat_masuk];
+        $data['surat_masuk']            = $this->main->get_data_where('mst_surat_keluar', $where);
+        $data['opd']                    = $this->main->get_data('mst_opd');
+        $data['bagian']                 = $this->main->get_data('mst_bagian');
 
         $this->load->view('Suratkeluar/ubah', $data);
     }
     public function update_data()
     {
-        $where['id_surat_masuk']        = $this->input->post('id_surat_masuk');
+        $where['id_surat_keluar']       = $this->input->post('id_surat_keluar');
         $data['no_surat']               = $this->input->post('no_surat');
         $data['tgl_surat']              = $this->input->post('tgl_surat');
-        $data['pengirim_surat']         = $this->input->post('pengirim_surat');
-        $data['perihal_surat']          = $this->input->post('perihal_surat');
-        $data['tgl_terima_surat']       = $this->input->post('tgl_terima_surat');
-        $data['no_agenda_surat']       = $this->input->post('no_agenda_surat');
-        $gambarLama                     = $this->input->post('gambarLama');
-
-        $upload                         = $this->main->upload_file_surat();
-        if ($upload['result'] == "success") { // Jika proses upload sukses
-            $images = $upload['file']['file_name'];
-            if (file_exists('./assets/img/Suratkeluar/' . $gambarLama)) {
-                unlink('./assets/img/Suratkeluar/' . $gambarLama);
-            }
-        } else { // Jika proses upload gagal
-            $images = $gambarLama; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
-        }
-
-        $data['bukti_surat']         = $images;
+        $data['id_opd']                 = $this->input->post('id_opd');
+        $data['id_bagian']              = $this->input->post('id_bagian');
+        $data['id_jenis']               = $this->input->post('id_jenis');
+        $data['perihal']                = $this->input->post('perihal');
+        $data['sifat']                  = $this->input->post('sifat');
+        $data['isi_surat']              = $this->input->post('isi_surat');
+ 
 
         $this->main->update_data('mst_surat_keluar', $data, $where);
         redirect('Suratkeluar/index');

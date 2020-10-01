@@ -44,6 +44,21 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="no_surat">Bagian Penerima</label>
+                        <select class="form-control select2" style="width: 100%;" name="id_bagian" id="id_bagian">
+                            <option value="">--Pilih Bagian--</option>
+                            <?php foreach($bagian as $row_bagian){?>
+                            <option value="<?= $row_bagian->id_bagian;?>"><?= $row_bagian->nama_bagian;?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label for="no_surat">Tanggal</label>
+                        <input type="date" class="form-control" name="tgl_surat" placeholder="Tanggal">
+                    </div>
+                </div>
+                <div class="row">
                 <div class="form-group col-md-6">
                     <label for="no_surat">Nomer Surat</label>
                         <input type="text" class="form-control" name="no_surat" placeholder="No Surat" required>
@@ -57,10 +72,6 @@
                 <div class="form-group col-md-6">
                     <label for="no_surat">Perihal</label>
                         <input type="text" class="form-control" name="perihal" placeholder="Perihal">
-                    </div>
-                    <div class="form-group col-md-6">
-                    <label for="no_surat">Tanggal</label>
-                        <input type="date" class="form-control" name="tgl_surat" placeholder="Tanggal">
                     </div>
                 </div>
                     <div class="form-group">
