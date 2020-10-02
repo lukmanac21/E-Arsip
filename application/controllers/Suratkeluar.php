@@ -26,6 +26,7 @@ class Suratkeluar extends CI_Controller
         $data['menu']                   = $this->main->get_menu_selected($id_role);
         $data['opd']                    = $this->main->get_data('mst_opd');
         $data['bagian']                 = $this->main->get_data('mst_bagian');
+        $data['jenis']                 = $this->main->get_data('mst_jenis');
 
         $this->load->view('Suratkeluar/tambah', $data);
     }

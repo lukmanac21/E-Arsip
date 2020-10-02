@@ -30,9 +30,10 @@
                                     <div class="form-group col-md-6">
                                         <label for="no_surat">Jenis Surat</label>
                                         <select class="form-control select2" style="width: 100%;" name="id_jenis" id="id_jenis" required>
-                                            <option value="">--Pilih Jenis--</option>
-                                            <option value="1">Surat Pengantar</option>
-                                            <option value="2">Surat Resmi</option>
+                                        <option value="">--Pilih Jenis--</option>
+                                            <?php foreach ($jenis as $row_jenis) { ?>
+                                                <option value="<?= $row_jenis->id_jenis; ?>"><?= $row_jenis->nama_jenis; ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
