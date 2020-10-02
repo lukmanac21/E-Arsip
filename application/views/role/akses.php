@@ -20,6 +20,7 @@
               <tr>
                 <th>Nama Menu</th>
                 <th>Hak Akses</th>
+                <th>Fungsi</th>
               </tr>
               </thead>
               <tbody>
@@ -28,8 +29,16 @@
                         <td><?= $row_data->nama_sub_menu;?></td>
                         <td>
                             <div id="form-check-input" class="form-check">
-                            <input class="form-check-input" type="checkbox"<?= get_access($role['id_role'],$row_data->id_sub_menu);?> data-role="<?= $role['id_role'];?>" data-menu="<?= $row_data->id_sub_menu;?>">
+                              <input class="form-check-input" type="checkbox"<?= get_access($role['id_role'],$row_data->id_sub_menu);?> data-role="<?= $role['id_role'];?>" data-menu="<?= $row_data->id_sub_menu;?>">
                             </div>
+                        </td>
+                        <td>
+                              <?php foreach($func as $row_func){?>     
+                                <div class="form-check form-check-inline">
+                                <input class="" type="checkbox" name="row_func[]" value="<?=$row_func->id_function?>">&nbsp;
+                                  <?=$row_func->nama_function?>
+                                  </div>
+                              <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>

@@ -33,6 +33,7 @@ class Role extends CI_Controller {
         $data['menu']           = $this->main->get_menu_selected($role_id);
         $data['data']           = $this->main->show_all_data_order_by('mst_sub_menu','nama_sub_menu');
         $data['role']           = $this->db->get_where('mst_role',['id_role'=>$id_role])->row_array();
+        $data['func'] 		    = $this->main->get_data('mst_function');
         
         $this->load->view('Role/akses', $data);
     }
