@@ -42,9 +42,15 @@
                                             <td style="text-align:center;"><?= $sk->perihal; ?></td>
                                             <td style="text-align:center;"><?= $sk->tgl_surat; ?></td>
                                             <td style="text-align:center;">
-                                            <a style="color:white;" type="button" href="<?= site_url('Suratkeluar/cetak_data/') . $sk->id_surat_keluar; ?>" class="btn btn-primary">
-                                                    Cetak
-                                                </a>
+                                                <?php if ($d->id_paraf_kepala == null && $d->id_paraf_sek == null) : ?>
+                                                    <button style="color:white;" type="button" class="btn btn-secondary">
+                                                        Cetak
+                                                    </button>
+                                                <?php else : ?>
+                                                    <a style="color:white;" type="button" href="<?= site_url('Suratkeluar/cetak_data/') . $sk->id_surat_keluar; ?>" class="btn btn-primary">
+                                                        Cetak
+                                                    </a>
+                                                <?php endif; ?>
                                             </td>
                                             <td style="text-align:center;">
                                                 <a style="color:white;" type="button" href="<?= site_url('Suratkeluar/edit_data/') . $sk->id_surat_keluar; ?>" class="btn btn-info">

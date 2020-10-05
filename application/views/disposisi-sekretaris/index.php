@@ -45,9 +45,9 @@
                                             </td>
                                             <td style="text-align:center;">
                                                 <?php if ($d->id_paraf_sek == NULL) : ?>
-                                                    <a href="<?= site_url('DisposisiSekretaris/verif/') . $d->id_disposisi ?>" class="btn btn-outline-success btn-sm"><i class="far fa-check-circle"></i> Verif</a>
+                                                    <a href="<?= site_url('DisposisiSekretaris/verif/') . $d->id_disposisi ?>" class="btn btn-success btn-sm"> Verif</a>
                                                 <?php else : ?>
-                                                    <a href="<?= site_url('DisposisiSekretaris/batal_verif/') . $d->id_disposisi ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-times-circle"></i> Batal</a>
+                                                    <a href="<?= site_url('DisposisiSekretaris/batal_verif/') . $d->id_disposisi ?>" class="btn btn-danger btn-sm"> Batal</a>
                                                 <?php endif; ?>
                                             </td>
                                             <td style="text-align:center;">

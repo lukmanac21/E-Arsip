@@ -40,9 +40,15 @@
                                             <td style="text-align:center;"><?= $d->diteruskan_kepada; ?></td>
                                             <td style="text-align:center;"><?= $d->isi_disposisi; ?></td>
                                             <td style="text-align:center;">
-                                                <a style="color:white;" type="button" href="<?= site_url('Disposisi/cetak/') . $d->id_disposisi; ?>" class="btn btn-success">
-                                                    Cetak
-                                                </a>
+                                                <?php if ($d->id_paraf_kepala == null && $d->id_paraf_sek == null) : ?>
+                                                    <button style="color:white;" type="button" class="btn btn-secondary">
+                                                        Cetak
+                                                    </button>
+                                                <?php else : ?>
+                                                    <a style="color:white;" type="button" href="<?= site_url('Disposisi/cetak/') . $d->id_disposisi; ?>" class="btn btn-success">
+                                                        Cetak
+                                                    </a>
+                                                <?php endif; ?>
                                             </td>
                                             <td style="text-align:center;">
                                                 <a style="color:white;" type="button" href="<?= site_url('Disposisi/edit_data/') . $d->id_disposisi; ?>" class="btn btn-info">
