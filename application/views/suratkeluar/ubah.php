@@ -33,8 +33,9 @@
                                         <label for="no_surat">Jenis Surat</label>
                                         <select class="form-control select2" style="width: 100%;" name="id_jenis" id="id_jenis" required>
                                             <option value="">--Pilih Jenis--</option>
-                                            <option value="1" <?php if ($surat_keluar->id_jenis == 1) echo 'selected = "selected"' ?>>Surat Pengantar</option>
-                                            <option value="2" <?php if ($surat_keluar->id_jenis == 2) echo 'selected = "selected"' ?>>Surat Resmi</option>
+                                            <?php foreach ($jenis as $row_jenis) { ?>
+                                            <option value="1" <?php if ($surat_keluar->id_jenis == $row_jenis->id_jenis) echo 'selected = "selected"' ?>><?= $row_jenis->nama_jenis?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">

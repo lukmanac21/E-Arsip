@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2020 at 04:41 AM
+-- Generation Time: Oct 05, 2020 at 03:29 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -65,7 +65,7 @@ CREATE TABLE `mst_disposisi` (
 --
 
 INSERT INTO `mst_disposisi` (`id_disposisi`, `id_surat`, `tgl_disposisi`, `diteruskan_kepada`, `isi_disposisi`, `id_paraf_kepala`, `id_paraf_sek`, `created_by`) VALUES
-(4, 3, '2020-09-24', '<ol><li>Mas Lukman</li><li>Mas Dandi</li></ol>', 'Where are you going man, buwung apa tu?', NULL, 4, 2);
+(4, 3, '2020-09-24', '<div>1. Kepada Bidang</div>', 'Mendindaklanjuti dan memproses surat magang', 3, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -210,8 +210,8 @@ CREATE TABLE `mst_paraf` (
 --
 
 INSERT INTO `mst_paraf` (`id_paraf`, `nama_paraf`, `img_paraf`, `jabatan_surat`, `NIP`, `id_role`) VALUES
-(3, 'Lukman, ST.MT', 'web.png', '', '', 4),
-(4, 'Huda, ST.MT', 'LOGO_POLITEKNIK_NEGERI_JEMBER.png', '', '', 5);
+(3, 'Mohammad Tamin,SH.,MM', 'kepala.png', 'Pembina Tk. 1', '19620601 198603 1 022', 4),
+(4, 'Khoirul Anam,ST.,MM', 'sekretaris.png', '', '', 5);
 
 -- --------------------------------------------------------
 
@@ -301,19 +301,18 @@ CREATE TABLE `mst_surat_keluar` (
   `perihal` varchar(255) NOT NULL,
   `no_surat` varchar(255) NOT NULL,
   `sifat` varchar(255) NOT NULL,
+  `lampiran` int(11) NOT NULL,
   `tgl_surat` date NOT NULL,
   `isi_surat` text NOT NULL,
-  `id_paraf` int(11) NOT NULL,
-  `lampiran` int(11) NOT NULL
+  `id_paraf` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mst_surat_keluar`
 --
 
-INSERT INTO `mst_surat_keluar` (`id_surat_keluar`, `id_jenis`, `id_opd`, `id_bagian`, `perihal`, `no_surat`, `sifat`, `tgl_surat`, `isi_surat`, `id_paraf`, `lampiran`) VALUES
-(1, 1, 4, 1, 'Usulan Pergantian Bendahara', '182-20321-234', 'Penting', '2020-09-30', '<p class=\"MsoListParagraphCxSpFirst\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify\">Dengan hormat, <o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Berdasarkan informasi yang kami terima\r\ndari Kepala Satpol PP Kabupaten Bogor yang menginformasikan bahwa PT Elang Sejahtera\r\nsaat ini memasang baliho di Jl Raya Bogor Km 35. Baliho tersebut saat ini belum\r\ndibayarkan pajaknya senilai <b>Rp. 5.250.000\r\n(Lima Juta Dua Ratus Lima Puluh Ribu)</b>.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Untuk itu dengan masuknya surat ini kami\r\nbermaksud untuk menagih biaya pajak reklame tersebut. Kami memberikan waktu\r\nhingga 30 September 2019 untuk pihak kantor bapak bisa menyelesaikan\r\npermasalahan ini. Jika dalam waktu yang sudah ditentukan tidak ada respon balik\r\ndari perwakilan perusahaan maka kami akan menindak dengan mencopot baliho tersebut.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpLast\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Demikianlah informasi ini kami sampaikan\r\nagar menjadi perhatian bagi perusahaan bapak. Atas perhatian dan kerjasamanya\r\nkami ucapkan terima kasih.<o:p></o:p></p>                        ', 3, 1),
-(2, 1, 5, 2, 'Usulan Pergantian Bendahara', '182-20321-234', 'Penting', '2020-10-02', 'Bendahara minta makan', 0, 1);
+INSERT INTO `mst_surat_keluar` (`id_surat_keluar`, `id_jenis`, `id_opd`, `id_bagian`, `perihal`, `no_surat`, `sifat`, `lampiran`, `tgl_surat`, `isi_surat`, `id_paraf`) VALUES
+(1, 1, 4, 1, 'Usulan Pergantian Bendahara', '182-20321-234', 'Penting', 1, '2020-09-30', '<p class=\"MsoListParagraphCxSpFirst\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify\">Dengan hormat, <o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Berdasarkan informasi yang kami terima\r\ndari Kepala Satpol PP Kabupaten Bogor yang menginformasikan bahwa PT Elang Sejahtera\r\nsaat ini memasang baliho di Jl Raya Bogor Km 35. Baliho tersebut saat ini belum\r\ndibayarkan pajaknya senilai <b>Rp. 5.250.000\r\n(Lima Juta Dua Ratus Lima Puluh Ribu)</b>.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpMiddle\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Untuk itu dengan masuknya surat ini kami\r\nbermaksud untuk menagih biaya pajak reklame tersebut. Kami memberikan waktu\r\nhingga 30 September 2019 untuk pihak kantor bapak bisa menyelesaikan\r\npermasalahan ini. Jika dalam waktu yang sudah ditentukan tidak ada respon balik\r\ndari perwakilan perusahaan maka kami akan menindak dengan mencopot baliho tersebut.<o:p></o:p></p>\r\n\r\n<p class=\"MsoListParagraphCxSpLast\" style=\"margin-left:0cm;mso-add-space:auto;\r\ntext-align:justify;line-height:115%\">Demikianlah informasi ini kami sampaikan\r\nagar menjadi perhatian bagi perusahaan bapak. Atas perhatian dan kerjasamanya\r\nkami ucapkan terima kasih.<o:p></o:p></p>                        ', 3);
 
 -- --------------------------------------------------------
 
@@ -337,7 +336,7 @@ CREATE TABLE `mst_surat_masuk` (
 --
 
 INSERT INTO `mst_surat_masuk` (`id_surat_masuk`, `no_surat`, `tgl_surat`, `pengirim_surat`, `perihal_surat`, `tgl_terima_surat`, `no_agenda_surat`, `bukti_surat`) VALUES
-(3, '800/1558/430.9.11/2020', '2020-09-14', 'Dinas PUPR', 'Permohonan Perizinan Magang', '2020-09-09', 278, 'chopper.jpg');
+(3, '800/1558/430.9.11/2020', '2020-09-14', 'Dinas PUPR', 'Permohonan Perizinan Magang', '2020-09-09', 278, '1595093819.jpg');
 
 -- --------------------------------------------------------
 
@@ -358,10 +357,9 @@ CREATE TABLE `mst_user` (
 --
 
 INSERT INTO `mst_user` (`id_user`, `id_role`, `nama_user`, `email_user`, `password_user`) VALUES
-(1, 1, 'Admin', 'Admin@kominfo.com', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
-(2, 3, 'Umum', 'Umum@kominfo.com', 'b617726c7f45ecb196ef74881089fa17d90d7276'),
-(3, 4, 'Camat', 'Camat@kominfo.com', '93b89e6160d6c85d709954ce733d5eec131ab0a0'),
-(4, 5, 'Sekcam', 'Sekcam@kominfo.com', 'd37ea5b3911c9a2a5b9b22321041754193e41acb');
+(1, 1, 'Admin', 'Admin@kominfo', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(3, 4, 'Camat', 'Camat@bondowoso', '93b89e6160d6c85d709954ce733d5eec131ab0a0'),
+(4, 5, 'Sekcam', 'Sekcam@bondowoso', 'd37ea5b3911c9a2a5b9b22321041754193e41acb');
 
 -- --------------------------------------------------------
 

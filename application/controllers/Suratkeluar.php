@@ -63,6 +63,7 @@ class Suratkeluar extends CI_Controller
         $data['surat_keluar']           = $this->main->get_data_where('mst_surat_keluar', $where);
         $data['opd']                    = $this->main->get_data('mst_opd');
         $data['bagian']                 = $this->main->get_data('mst_bagian');
+        $data['jenis']                 = $this->main->get_data('mst_jenis');
 
         $this->load->view('Suratkeluar/ubah', $data);
     }
