@@ -141,6 +141,23 @@
 </script>
 <script>
   $(document).ready(function () {
+    $("#example3").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example4').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+<script>
+  $(document).ready(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
 

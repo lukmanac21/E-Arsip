@@ -66,7 +66,7 @@
                             <h3 class="card-title">Data Disposisi Surat Keluar</h3>
                         </div>
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example3" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                     <tr>
