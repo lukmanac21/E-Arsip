@@ -40,7 +40,7 @@
                                             <td style="text-align:center;"><?= $d->diteruskan_kepada; ?></td>
                                             <td style="text-align:center;"><?= $d->isi_disposisi; ?></td>
                                             <td style="text-align:center;">
-                                                <?php if ($d->id_paraf_kepala == null && $d->id_paraf_sek == null) : ?>
+                                                <?php if ($d->id_paraf_kepala == null || $d->id_paraf_sek == null) : ?>
                                                     <button style="color:white;" type="button" class="btn btn-secondary">
                                                         Cetak
                                                     </button>

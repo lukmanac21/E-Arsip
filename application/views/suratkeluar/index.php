@@ -42,7 +42,7 @@
                                             <td style="text-align:center;"><?= $sk->perihal; ?></td>
                                             <td style="text-align:center;"><?= $sk->tgl_surat; ?></td>
                                             <td style="text-align:center;">
-                                                <?php if ($d->id_paraf_kepala == null && $d->id_paraf_sek == null) : ?>
+                                                <?php if ($sk->id_paraf == null) : ?>
                                                     <button style="color:white;" type="button" class="btn btn-secondary">
                                                         Cetak
                                                     </button>

@@ -36,7 +36,7 @@ class Login extends CI_Controller
 ?>
             <script type="text/javascript">
                 alert("Email atau Password salah!");
-                window.location.href = "http://localhost/E-Arsip/index.php/Login/index";
+                window.location.href = "http://172.18.0.62/E-Arsip/index.php/Login/index";
             </script>
 <?php
         }

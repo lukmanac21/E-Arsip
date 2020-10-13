@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/E-Arsip/';
+$config['base_url'] = 'http://172.18.0.62/E-Arsip/';
 
 /*
 |--------------------------------------------------------------------------
